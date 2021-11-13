@@ -1,3 +1,3 @@
 # Basic-Database-Concepts
 
-Some basic activities developed in MySQL
+Some basic database projects developed in MySQL
