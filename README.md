@@ -84,16 +84,19 @@ SELECT TOP 10 FirstName AS "Name", LastName AS "LastName" FROM Person.Person;
 SELECT TOP 10 ProductNumber AS "Product Number" FROM Production.Product;
 SELECT UnitPrice AS "Unit Price" FROM Sales.SalesOrderDetail;
 
+SELECT Top 10 * FROM Person.BusinessEntityAdress BA INNER JOIN Person.Adress PA ON PA.AdressID = BA.AdressID;
+SELECT p.BUsinessEntityID, p.FirstName, p.LastName, pe.EmailAddress FROM Person.Person AS P INNER JOIN Person.EmailAddress PE ON p.BusinessEntityID = pe.BusinessEntityID;
+SELECT pr.ListPrice, pr.Name, pc.Name FROM Production.Product Pr INNER JOIN Production.ProductSubcategory PC ON PC.ProductSubcategoryID = pr.ProductSubcategoryID;
+SELECT pp.BusinessEntityID, pt.PhoneNumberTypeID, pp.PhoneNumber FROM Person.PersonPhone PP INNER JOIN Person.PhoneNumberType PT ON PT.PhoneNumberTypeID = pp.PhoneNumberTypeID;
+SELECT TOP 10 PA.AddressID, PA.City, PS.StateProvinceID, PS.Name FROM Person.Address PA INNER JOIN Person.StateProvince PS ON PS.StateProvinceID = PA.StateProvinceID;
 
+SELECT * FROM Person.Person PP INNER JOIN Sales.PersonCreditCard PC ON PP.BusinessEntityID = PC.BusinessEntityID;
+SELECT * FROM Person.Person PP LEFT JOIN Sales.PersonCreditCard PC ON PP.BusinessEntityID = PC.BusinessEntityID;
 
+SELECT Firstname, Title, MiddleName FROM Person.Person WHERE Title = 'Mr.' UNION SELECT FirstName, Title, MiddleName FROM Person.Person WHERE MiddleName = 'A';
 
-
-
-
-
-
-
-
+SELECT A.ContactName, A.Region, B.ContactName, B.Region FROM Customers A, Customers B WHERE A.Region = B.Region;
+SELECT A.FirstName, A.HireDate, B.FirstName, B.HireDate FROM Employees A, Employees B WHERE DATEPART(YEAR, A.Hiredate) = DATEPART(YEAR, B.Hiredate)
 
 
 
