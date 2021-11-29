@@ -57,6 +57,52 @@ SELECT DISTINCT(city) FROM Person.Address;
 SELECT COUNT(*) FROM Production.Product WHERE color = 'red' AND ListPrice BETWEEN 500 AND 1000;
 SELECT COUNT(*) FROM Production.Product WHERE name LIKE '%road%';
 
+SELECT TOP 10 * FROM Sales.SalesOrderDetail;
+SELECT TOP 10 SUM(LineTotal) FROM Sales.SalesOrderDetail;
+SELECT TOP 10 SUM(LineTotal) AS "Sum" FROM Sales.SalesOrderDetail;
+SELECT TOP 10 MAX(LineTotal) FROM Sales.SalesOrderDetail;
+SELECT TOP 10 MIN(LineTotal) FROM Sales.SalesOrderDetail;
+SELECT TOP 10 AVG(LineTotal) FROM Sales.SalesOrderDetail;
+
+SELECT * FROM Sales.SalesOrderDetail;
+SELECT SpecialOfferID, UnitPrice FROM Sales.SalesOrderDetail WHERE SpecialOfferID = 9;
+SELECT SpecialOfferID, SUM(UNitPrice) AS "Sum" FROM Sales.SalesOrderDetail GROUP BY SpecialOfferID;
+SELECT ProductID, COUNT(ProductID) AS "Count" FROM Sales.SalesOrderDetail GROUP BY ProductID;
+SELECT FirstName, COUNT(FirstName) AS "Count" FROM Person.Person GROUP BY FirstName;
+SELECT Color, AVG(ListPrice) AS "Price" FROM Production.Product GROUP BY Color;
+SELECT MiddleName, COUNT(Firstname) AS "qtd" FROM Person.Person GROUP BY MiddleName;
+SELECT ProductID, AVG(OrderQty) AS "avg" FROM Sales.SalesOrderDetail GROUP BY ProductID;
+SELECT TOP 10 ProductID, SUM(LineTotal) FROM Sales.SalesOrderDetail GROUP BY ProductID ORDER BY SUM(LineTotal) DESC;
+SELECT ProductID, COUNT(ProductID) AS "Count" AVG(OrderQty) AS "avg" FROM Production.WorkOrder GROUP BY ProductID;
+
+SELECT ProductID, SUM(LineTotal) AS "Total" FROM Sales.SalesOrderDetail GROUP BY ProductID HAVING SUM(LineTotal) BETWEEN 162000 AND 500000;
+SELECT StateProvinceID, COUNT(StateProvinceID) AS "qtd" FROM Person.Address GROUP BY StateProvinceID HAVING COUNT(StateProvinceID) > 1000;
+SELECT ProductID, AVG(LineTotal) FROM Sales.SalesOrderDetail GROUP BY ProductID HAVING AVG(LineTotal) > 1000000;
+
+SELECT TOP 10 ListPrice AS "Product Price" FROM Production.Product;
+SELECT TOP 10 FirstName AS "Name", LastName AS "LastName" FROM Person.Person;
+SELECT TOP 10 ProductNumber AS "Product Number" FROM Production.Product;
+SELECT UnitPrice AS "Unit Price" FROM Sales.SalesOrderDetail;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
