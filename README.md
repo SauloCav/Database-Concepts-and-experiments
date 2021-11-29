@@ -27,5 +27,23 @@ SELECT count(DISTINCT tittle) FROM person.Person;
 SELECT count(*) FROM production.Product;
 SELECT count(size) FROM production.Product;
  
+SELECT TOP 10 * FROM production.Product;
+SELECT TOP 100 * FROM production.Product;
+
+SELECT * FROM person.Person ORDER BY FirstName asc;
+SELECT * FROM person.Person ORDER BY FirstName desc;
+SELECT * FROM person.Person ORDER BY FirstName desc, LastName asc;
+SELECT FirstName, LastName FROM person.Person ORDER BY FirstName desc, LastName asc; 
+SELECT TOP 10 productId FROM Production.Product ORDER BY ListPrice desc;
+SELECT TOP 4 name, ProductNumber FROM Production.Product ORDER BY productId asc;
+
+SELECT * FROM production.Product WHERE ListPrice BETWEEN 1000 AND 1500;
+SELECT * FROM production.Product WHERE ListPrice NOT BETWEEN 1000 AND 1500;
+SELECT * FROM HumanResources.Employee WHERE HIreDate BETWEEN '2009/01/01' AND '2010/01/01';
+SELECT * FROM HumanResources.Employee WHERE HIreDate BETWEEN '2009/01/01' AND '2010/01/01' ORDER BY HireDate;
+
+SELECT * FROM person.Person WHERE BusinessEntityID IN (2,7,13);
+SELECT * FROM person.Person WHERE BusinessEntityID NOT IN (2,7,13);
+
 
 
