@@ -20,12 +20,12 @@ SELECT * FROM HumanResources.Employee WHERE MaritalStatus = 'm' AND SalarieFlag 
 SELECT * FROM person.Person WHERE FirstName = 'peter' AND LastName = 'krebs';
 SELECT * FROM person.EmailAdress WHERE BusinessEntityID = 26;
 
-SELECT count(*) FROM person.Person;
-SELECT count(tittle) FROM person.Person;
-SELECT count(DISTINCT tittle) FROM person.Person;
+SELECT COUNT(*) FROM person.Person;
+SELECT COUNT(tittle) FROM person.Person;
+SELECT COUNT(DISTINCT tittle) FROM person.Person;
 
-SELECT count(*) FROM production.Product;
-SELECT count(size) FROM production.Product;
+SELECT COUNT(*) FROM production.Product;
+SELECT COUNT(size) FROM production.Product;
  
 SELECT TOP 10 * FROM production.Product;
 SELECT TOP 100 * FROM production.Product;
@@ -44,6 +44,20 @@ SELECT * FROM HumanResources.Employee WHERE HIreDate BETWEEN '2009/01/01' AND '2
 
 SELECT * FROM person.Person WHERE BusinessEntityID IN (2,7,13);
 SELECT * FROM person.Person WHERE BusinessEntityID NOT IN (2,7,13);
+
+SELECT * FROM person.Person WHERE FirstName LIKE 'ovi%';
+SELECT * FROM person.Person WHERE FirstName LIKE '%to';
+SELECT * FROM person.Person WHERE FirstName LIKE '%essa%';
+SELECT * FROM person.Person WHERE FirstName LIKE '%ro_';
+
+SELECT COUNT(ListPrice) FROM Production.Product WHERE ListPrice > 1500;
+SELECT COUNT(LastName) FROM Person.Person WHERE LastName LIKE 'p%';
+SELECT COUNT(DISTINCT(city)) FROM Person.Address;
+SELECT DISTINCT(city) FROM Person.Address;
+SELECT COUNT(*) FROM Production.Product WHERE color = 'red' AND ListPrice BETWEEN 500 AND 1000;
+SELECT COUNT(*) FROM Production.Product WHERE name LIKE '%road%';
+
+
 
 
 
