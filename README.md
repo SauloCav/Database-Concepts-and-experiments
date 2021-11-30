@@ -96,13 +96,11 @@ SELECT * FROM Person.Person PP LEFT JOIN Sales.PersonCreditCard PC ON PP.Busines
 SELECT Firstname, Title, MiddleName FROM Person.Person WHERE Title = 'Mr.' UNION SELECT FirstName, Title, MiddleName FROM Person.Person WHERE MiddleName = 'A';
 
 SELECT A.ContactName, A.Region, B.ContactName, B.Region FROM Customers A, Customers B WHERE A.Region = B.Region;
-SELECT A.FirstName, A.HireDate, B.FirstName, B.HireDate FROM Employees A, Employees B WHERE DATEPART(YEAR, A.Hiredate) = DATEPART(YEAR, B.Hiredate)
+SELECT A.FirstName, A.HireDate, B.FirstName, B.HireDate FROM Employees A, Employees B WHERE DATEPART(YEAR, A.Hiredate) = DATEPART(YEAR, B.Hiredate);
 
-
-
-
-
-
+SELECT * FROM Production.Product WHERE ListPrice > (SELECT AVG(ListPrice) FROM Production.Product);
+SELECT FirstName FROM Person.Person WHERE BusinessEntityID IN (SELECT BusinessEntityID FROM HumanResources.Employee WHERE JobTitle = 'Design Engineer');
+SELECT P.FirstName FROM Person.Person P INNER JOIN HumanResources.Employee E ON P.BusinessEntityID = E.BusinessEntityID AND E.JobTitle = 'Design Engineer';
 
 
 
