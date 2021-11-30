@@ -102,6 +102,23 @@ SELECT * FROM Production.Product WHERE ListPrice > (SELECT AVG(ListPrice) FROM P
 SELECT FirstName FROM Person.Person WHERE BusinessEntityID IN (SELECT BusinessEntityID FROM HumanResources.Employee WHERE JobTitle = 'Design Engineer');
 SELECT P.FirstName FROM Person.Person P INNER JOIN HumanResources.Employee E ON P.BusinessEntityID = E.BusinessEntityID AND E.JobTitle = 'Design Engineer';
 
+SELECT SalesOrderID, DATEPART(month, OrderDate) AS Month FROM Sales.SalesOrderHeader
+SELECT SalesOrderID, DATEPART(day, OrderDate) AS Day FROM Sales.SalesOrderHeader
+SELECT SalesOrderID, DATEPART(year, OrderDate) AS Year FROM Sales.SalesOrderHeader
+
+String Manipulation: CONCAT | UPPER | LOWER | LEN | SUBSTRING | REPLACE 
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
