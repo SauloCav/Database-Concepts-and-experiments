@@ -102,24 +102,37 @@ SELECT * FROM Production.Product WHERE ListPrice > (SELECT AVG(ListPrice) FROM P
 SELECT FirstName FROM Person.Person WHERE BusinessEntityID IN (SELECT BusinessEntityID FROM HumanResources.Employee WHERE JobTitle = 'Design Engineer');
 SELECT P.FirstName FROM Person.Person P INNER JOIN HumanResources.Employee E ON P.BusinessEntityID = E.BusinessEntityID AND E.JobTitle = 'Design Engineer';
 
-SELECT SalesOrderID, DATEPART(month, OrderDate) AS Month FROM Sales.SalesOrderHeader
-SELECT SalesOrderID, DATEPART(day, OrderDate) AS Day FROM Sales.SalesOrderHeader
-SELECT SalesOrderID, DATEPART(year, OrderDate) AS Year FROM Sales.SalesOrderHeader
+SELECT SalesOrderID, DATEPART(month, OrderDate) AS Month FROM Sales.SalesOrderHeader;
+SELECT SalesOrderID, DATEPART(day, OrderDate) AS Day FROM Sales.SalesOrderHeader;
+SELECT SalesOrderID, DATEPART(year, OrderDate) AS Year FROM Sales.SalesOrderHeader;
 
 String Manipulation: CONCAT | UPPER | LOWER | LEN | SUBSTRING | REPLACE 
 
+CREATE TABLE Chanel (
+   ChanelId INT PRIMARY KEY,
+   Name VARCHAR(150) NOT NULL,
+);
+SELECT * FROM Chanel;
 
+CREATE TABLE Video (
+   VideoId INT PRIMARY KEY,
+   Wiels INT DEFAULT 0,
+   Likes INT DEFAULT 0,
+);
+SELECT * FROM Video;
 
+CREATE TABLE Class(
+   Id INT PRIMARY KEY,
+   Name VARCHAR(150) NOT NULL,
+);
+INSERT INTO Class(Id, Name) VALUES(1, 'Class 1');
+SELECT * FROM Class;
+UPDATE Class SET Name = 'Class 2' WHERE Id = 1;
+DELETE FROM Class WHERE Name = 'Class 2';
+DELETE FROM Class;
+EXEC sp_rename 'youtube', 'youtube2';
 
-
-
-
-
-
-
-
-
-
+DROP TABLE Class; 
 
 
 
