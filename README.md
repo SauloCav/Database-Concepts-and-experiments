@@ -136,6 +136,25 @@ DROP TABLE Class;
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+CREATE TABLE Alunos (
+   id_aluno int PRIMARY KEY NOT NULL,
+   nome varchar(200),
+   data_nascimento date,
+   sexo varchar(1),
+   data_cadastro dateline,
+   login_cadastro varchar(15)
+);
+
+CREATE TABLE Situacao (
+   id_situacao int PRIMARY KEY NOT NULL,
+   situacao varchar(25) NOT NULL,
+   data_cadastro datetime,
+   login_cadastro varchar(15)
+);
+
+DROP TABLE Alunos;
+
+
 SELECT tt.id_curso IDC, tt.id_turma IDT, tt.data_inicio "DATA COMEÇO" FROM dbo.turmas TT;
 SELECT * FROM AlunosxTurmas AT, Turmas T, Cursos C WHERE AT.id_turma = T.id_turma AND T.id_curso = C.id_curso;
 
