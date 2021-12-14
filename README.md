@@ -207,7 +207,6 @@ DROP TABLE Cursos;
 DROP TABLE Turmas;
 DROP TABLE Registro_Presenca;
 
-
 SELECT tt.id_curso IDC, tt.id_turma IDT, tt.data_inicio "DATA COMEÇO" FROM dbo.turmas TT;
 SELECT * FROM AlunosxTurmas AT, Turmas T, Cursos C WHERE AT.id_turma = T.id_turma AND T.id_curso = C.id_curso;
 
