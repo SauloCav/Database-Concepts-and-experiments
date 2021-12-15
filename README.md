@@ -221,3 +221,14 @@ SELECT DISTINCT DATEPART(YEAR, data_nascimento) AS Ano FROM dbo.alunos ORDER BY 
 SELECT CONVERT(char, GETDATE(), 103); -- CONVERT is very important and has a huge documentation!
 
 SELECT DIFERENCE('Alessandro', 'Alex');
+
+
+
+
+
+
+
+
+
+
+
