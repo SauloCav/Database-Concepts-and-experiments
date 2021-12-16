@@ -282,7 +282,6 @@ END;
 GO
 
 EXEC IncluirNovoCursoComValidacao 'VBA I', 'ATROVATO';
-
 EXEC IncluirNovoCursoComValidacao 'VBA II', 'ATROVATO';
 
 
