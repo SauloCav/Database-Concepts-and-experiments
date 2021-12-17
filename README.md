@@ -222,6 +222,22 @@ SELECT CONVERT(char, GETDATE(), 103); -- CONVERT is very important and has a hug
 
 SELECT DIFERENCE('Alessandro', 'Alex');
 
+SELECT x.*
+   INTO tTemp
+   FROM (
+      SELECT row_number() OVER(ORDER BY id_aluno) linha,
+         y.id_aluno, y.nome, y.sexo, y.nome_curso, y.data_inicio, y.data_termino, y.valor
+      FROM (
+         SELECT a.id_aluno, a.nome, a.sexo, c.nome_curso, t.data_inicio, t.data_termino, at.valor
+            FROM alunosxTurmas at
+               inner join turmas t on (t.id_turma = at.id_turma)
+               inner join turmas c on (c.id_turma = t.id_turma)
+               inner join turmas a on (a.id_turma = at.id_turma)      
+      ) x;
+SELECT * FROM tTemp;
+
+
+
 CREATE PROCEDURE BuscaCurso
    @NomeCurso VARCHAR(20)
 AS
