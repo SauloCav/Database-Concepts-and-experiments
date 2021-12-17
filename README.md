@@ -234,7 +234,32 @@ SELECT x.*
                inner join turmas c on (c.id_turma = t.id_turma)
                inner join turmas a on (a.id_turma = at.id_turma)      
       ) x;
+      
 SELECT * FROM tTemp;
+
+BEGIN TRY
+   SELECT * FROM temTable;
+END TRY
+BEGIN CATCH 
+   SELECT
+      ERROR_NUMBER() AS Número_erro;
+      ERROR_MESSAGE() AS Mensagem_erro;
+END CATCH;
+
+CREATE PROCEDURE prc Exemplo
+AS
+   SELECT * FROM tempTable;
+GO
+
+BEGIN TRY
+   EXECUTE prc_Exemplo;
+END TRY
+BEGIN CATCH 
+   SELECT
+      ERROR_NUMBER() AS Número_erro;
+      ERROR_MESSAGE() AS Mensagem_erro;
+END CATCH;
+
 
 
 
