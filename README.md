@@ -325,9 +325,13 @@ GO
 EXEC IncluirNovoCursoComValidacao 'VBA I', 'ATROVATO';
 EXEC IncluirNovoCursoComValidacao 'VBA II', 'ATROVATO';
 
+SELECT *
+   FROM dbo.turmas
+   WHERE id_curso NOT IN (1, 5);
 
-
-
+SELECT *
+   FROM dbo.turmas
+   WHERE id_curso NOT IN (1, 5);
 
 
 
