@@ -334,13 +334,3 @@ SELECT *
    WHERE id_curso NOT IN (1, 5);
 
 
-
-
-
-
-
-
-
-
-
-
