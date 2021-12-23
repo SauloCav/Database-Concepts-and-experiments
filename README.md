@@ -333,4 +333,73 @@ SELECT *
    FROM dbo.turmas
    WHERE id_curso NOT IN (1, 5);
 
+---------------------------------------------------------------------------------------------------------------------------------------
+
+SELECT FirstName, LastName, Department  
+FROM HumanResources.vEmployeeDepartmentHistory  
+WHERE FirstName = @FirstName AND LastName = @LastName  
+    AND EndDate IS NULL;  
+    
+USE AdventureWorks2012;  
+GO  
+CREATE PROCEDURE HumanResources.uspGetEmployeesTest2   
+    @LastName nvarchar(50),   
+    @FirstName nvarchar(50)   
+AS   
+
+    SET NOCOUNT ON;  
+    SELECT FirstName, LastName, Department  
+    FROM HumanResources.vEmployeeDepartmentHistory  
+    WHERE FirstName = @FirstName AND LastName = @LastName  
+    AND EndDate IS NULL;  
+GO  
+
+EXECUTE HumanResources.uspGetEmployeesTest2 N'Ackerman', N'Pilar';  
+-- Or  
+EXEC HumanResources.uspGetEmployeesTest2 @LastName = N'Ackerman', @FirstName = N'Pilar';  
+GO  
+-- Or  
+EXECUTE HumanResources.uspGetEmployeesTest2 @FirstName = N'Pilar', @LastName = N'Ackerman';  
+GO  
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+CREATE PROC What_DB_is_this
+AS
+SELECT DB_NAME() AS ThisDB;
+
+CREATE PROC What_DB_is_that @ID INT
+AS
+SELECT DB_NAME(@ID) AS ThatDB;
+
+-- Passing the function value as a variable.
+DECLARE @CheckDate DATETIME = GETDATE();
+EXEC dbo.uspGetWhereUsedProductID 819, @CheckDate;
+GO
+
+CREATE PROCEDURE dbo.usp_add_kitchen @dept_id INT, @kitchen_count INT NOT NULL
+WITH EXECUTE AS OWNER, SCHEMABINDING, NATIVE_COMPILATION
+AS
+BEGIN ATOMIC WITH (TRANSACTION ISOLATION LEVEL = SNAPSHOT, LANGUAGE = N'us_english')
+
+UPDATE dbo.Departments
+SET kitchen_count = ISNULL(kitchen_count, 0) + @kitchen_count
+WHERE ID = @dept_id
+END;
+GO
+
+CREATE PROCEDURE HumanResources.uspGetAllEmployees
+AS
+    SET NOCOUNT ON;
+    SELECT LastName, FirstName, JobTitle, Department
+    FROM HumanResources.vEmployeeDepartment;
+GO
+
+SELECT * FROM HumanResources.vEmployeeDepartment;
+
+
+
+
+
+
 
