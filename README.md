@@ -653,8 +653,60 @@ AS
     FROM HumanResources.Employee;
 GO
 
+EXEC sp_helptext 'HumanResources.uspEncryptThis';
 
+SELECT definition FROM sys.sql_modules
+WHERE object_id = OBJECT_ID('HumanResources.uspEncryptThis');
 
+IF OBJECT_ID ( 'dbo.uspProductByVendor', 'P' ) IS NOT NULL
+    DROP PROCEDURE dbo.uspProductByVendor;
+GO
+CREATE PROCEDURE dbo.uspProductByVendor @Name VARCHAR(30) = '%'
+WITH RECOMPILE
+AS
+    SET NOCOUNT ON;
+    SELECT v.Name AS 'Vendor name', p.Name AS 'Product name'
+    FROM Purchasing.Vendor AS v
+    JOIN Purchasing.ProductVendor AS pv
+      ON v.BusinessEntityID = pv.BusinessEntityID
+    JOIN Production.Product AS p
+      ON pv.ProductID = p.ProductID
+    WHERE v.Name LIKE @Name;
+
+CREATE PROCEDURE Purchasing.uspVendorAllInfo
+WITH EXECUTE AS CALLER
+AS
+    SET NOCOUNT ON;
+    SELECT v.Name AS Vendor, p.Name AS 'Product name',
+      v.CreditRating AS 'Rating',
+      v.ActiveFlag AS Availability
+    FROM Purchasing.Vendor v
+    INNER JOIN Purchasing.ProductVendor pv
+      ON v.BusinessEntityID = pv.BusinessEntityID
+    INNER JOIN Production.Product p
+      ON pv.ProductID = p.ProductID
+    ORDER BY v.Name ASC;
+GO
+
+CREATE PROCEDURE dbo.TruncateMyTable
+WITH EXECUTE AS SELF
+AS TRUNCATE TABLE MyDB..MyTable;
+
+-- Uses AdventureWorksDW database
+
+--Run CREATE PROCEDURE as the first statement in a batch.
+CREATE PROCEDURE Get10TopResellers
+AS
+BEGIN
+    SELECT TOP (10) r.ResellerName, r.AnnualSales
+    FROM DimReseller AS r
+    ORDER BY AnnualSales DESC, ResellerName ASC;
+END
+;
+GO
+
+--Show 10 Top Resellers
+EXEC Get10TopResellers;
 
 
 
