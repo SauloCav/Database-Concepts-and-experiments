@@ -49,11 +49,7 @@ CREATE TABLE ranking (
 );
 
 select *from users;
-
 select *from questoes_respostas;
-
 select *from denuncia_validacao;
-
 select *from stats;
-
 select *from ranking;
