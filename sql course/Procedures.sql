@@ -6,7 +6,6 @@ CREATE PROC What_DB_is_that @ID INT
 AS
 SELECT DB_NAME(@ID) AS ThatDB;
 
--- Passing the function value as a variable.
 DECLARE @CheckDate DATETIME = GETDATE();
 EXEC dbo.uspGetWhereUsedProductID 819, @CheckDate;
 GO
