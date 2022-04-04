@@ -116,12 +116,12 @@ AS
     JOIN Production.ProductSubcategory AS s
       ON p.ProductSubcategoryID = s.ProductSubcategoryID
     WHERE s.[Name] LIKE @Product AND p.ListPrice < @MaxPrice;
--- Populate the output variable @ListPprice.
+
 SET @ListPrice = (SELECT MAX(p.ListPrice)
     FROM Production.Product AS p
     JOIN Production.ProductSubcategory AS s
       ON p.ProductSubcategoryID = s.ProductSubcategoryID
     WHERE s.[Name] LIKE @Product AND p.ListPrice < @MaxPrice);
--- Populate the output variable @compareprice.
+
 SET @ComparePrice = @MaxPrice;
 GO
